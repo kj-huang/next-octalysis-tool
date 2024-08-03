@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * Copyright (c) Meta Platforms, Inc. and affiliates.
  *

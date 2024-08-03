@@ -1,11 +1,12 @@
 'use client';
 
+import styles from './page.module.css';
 import { useEffect, useState } from 'react';
 import OctalysisRadar from '../ui/components/OctalysisRadar';
 import { OctalysisProvider } from '../contexts/OctalysisContext';
 import OctalysisScorePanel from '../ui/components/Panels/ScorePanel/OctalysisScorePanel';
-import Editor from '../ui/components/StickyNote/Editor';
 import Value from '../ui/components/Panels/Values/Value';
+import MobileEditor from '../ui/components/MobileEditor/MobileEditor';
 
 export default function MobileOctalysisTool() {
   const [showCanvas, setShowCanvas] = useState(true);
@@ -22,11 +23,6 @@ export default function MobileOctalysisTool() {
     'CD7: Unpredictability & Curiosity',
     'CD8: Loss & Avoidance',
   ];
-
-
-  const toggleCd = () => {
-    setCurrentCd(currentCd === 1 ? 2 : 1);
-  };
 
   const calculateDimensions = () => {
     const windowWidth = window.innerWidth;
@@ -55,37 +51,55 @@ export default function MobileOctalysisTool() {
   };
 
   const handleLeftClick = () => {
-    setCurrentCd(currentCd === 1 ? 8 : currentCd - 1);
+    if (currentCd > 1) {
+      setCurrentCd(currentCd - 1);
+    }
   };
 
   const handleRightClick = () => {
-    setCurrentCd(currentCd === 8 ? 1 : currentCd + 1);
+    if (currentCd < cdTitles.length) {
+      setCurrentCd(currentCd + 1);
+    }
   };
 
   return (
     <OctalysisProvider>
       <div>
-        <div id='main-area'>
+        <div id='main-area' className={styles.mainArea}>
           {showCanvas ? (
             <OctalysisRadar width={rendererDimensions.width} height={rendererDimensions.height}></OctalysisRadar>
           ) : (
             <OctalysisScorePanel></OctalysisScorePanel>
           )}
-          <button onClick={toggleView}>{showCanvas ? 'Switch to Scoreboard' : 'Switch to Canvas'}</button>
+          <button onClick={toggleView}>
+            {showCanvas ? 'Switch to Scoreboard' : 'Switch to Canvas'}
+          </button>
         </div>
 
-              <div id="containers">
-        <div id="nav-bar">
-          <button onClick={handleLeftClick}>&lt; {/* Left arrow */}</button>
-          <div id="cd-title">{cdTitles[currentCd - 1]}</div>
-          <button onClick={handleRightClick}>&gt; {/* Right arrow */}</button>
-        </div>
+        <div className={styles.containers}>
+          <div className={styles.navBar}>
+            <button onClick={handleLeftClick} className={styles.navBarButton}>
+              &lt; {/* Left arrow */}
+            </button>
+            <div className={styles.cdTitle}>{cdTitles[currentCd - 1]}</div>
+            <button onClick={handleRightClick} className={styles.navBarButton}>
+              &gt; {/* Right arrow */}
+            </button>
+          </div>
 
-        <div id={`cd${currentCd}-container`}>
-          <Value cd={`CD${currentCd}`}/>
-          <Editor cd={`CD${currentCd}`} onEditingChange={ (isEditing: boolean) => {}}></Editor>
+          {cdTitles.map((title, index) => (
+            <div
+              key={index}
+              id={`cd${index + 1}-container`}
+              className={`${styles.cdContainer} ${
+                currentCd === index + 1 ? styles.visible : styles.hidden
+              }`}
+            >
+              <Value cd={`CD${index + 1}`} />
+              <MobileEditor cd={`CD${index + 1}`}></MobileEditor>
+            </div>
+          ))}
         </div>
-      </div>
       </div>
     </OctalysisProvider>
   );

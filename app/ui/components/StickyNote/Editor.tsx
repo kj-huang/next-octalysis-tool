@@ -1,6 +1,5 @@
 import styles from './Editor.module.css';
-import React, { useState, useEffect } from 'react';
-import { useOctalysis } from '@/app/contexts/OctalysisContext';
+import React, { useState } from 'react';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
@@ -10,9 +9,7 @@ import SaveBtn from './SaveButton';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 
 const Editor = ({ cd, onEditingChange }: { cd: string; onEditingChange: (isEditing: boolean) => void }) => {
-  const { data } = useOctalysis();
   const [editor] = useLexicalComposerContext();
-  const [paragraph, setParagraph] = useState(data[cd].coreDriveDescription.paragraph);
   const [isEditing, setIsEditing] = useState(false);
   const [floatingAnchorElem, setFloatingAnchorElem] = useState<HTMLDivElement | null>(null);
 
@@ -22,9 +19,6 @@ const Editor = ({ cd, onEditingChange }: { cd: string; onEditingChange: (isEditi
     }
   };
 
-  useEffect(() => {
-    setParagraph(data[cd].coreDriveDescription.paragraph);
-  }, [cd, data]);
 
   const handleDoubleClick = () => {
     setIsEditing(true);
@@ -35,8 +29,6 @@ const Editor = ({ cd, onEditingChange }: { cd: string; onEditingChange: (isEditi
     setIsEditing(false);
     onEditingChange(false);
   };
-
-  
 
   return (
     <div onDoubleClick={handleDoubleClick}>
