@@ -6,8 +6,14 @@ import Image from 'next/image';
 import ExportPng from './ExportPng';
 import ExportOctagon from './ExportOctagon';
 import { useOctalysis } from '@/app/contexts/OctalysisContext';
+import Tutorials from './Tutorials';
 
-const OctalysisHeader = ({dimensions}: {dimensions : {width: number, height: number}}) => {
+interface OctalysisHeaderProps {
+  dimensions: { width: number; height: number };
+  onTutorialStart: () => void;
+}
+
+const OctalysisHeader: React.FC<OctalysisHeaderProps> = ({ dimensions, onTutorialStart }) => {
   const { projectName } = useOctalysis();
   return (
     <div className={styles['header']}>
@@ -16,6 +22,7 @@ const OctalysisHeader = ({dimensions}: {dimensions : {width: number, height: num
         <span>Octalysis Tool</span>
       </div>
       <div className={styles['tools']}>
+        <Tutorials onTutorialStart={onTutorialStart} />
         <ExportPng projectName={projectName} dimensions={dimensions}/>
         <ExportOctagon projectName={projectName} dimensions={dimensions} />
       </div>

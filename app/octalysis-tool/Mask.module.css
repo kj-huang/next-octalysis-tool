@@ -1,0 +1,50 @@
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    pointer-events: all;
+  }
+  
+  .highlight {
+    position: absolute;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  }
+  
+  .tooltip {
+    position: absolute;
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    max-width: 300px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  .tooltip.top {
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+  }
+  
+  .tooltip.right {
+    transform: translateY(-50%);
+    margin-left: 10px;
+  }
+  
+  .tooltip.bottom {
+    transform: translateX(-50%);
+    margin-top: 10px;
+  }
+  
+  .tooltip.left {
+    transform: translateY(-50%);
+    margin-right: 10px;
+  }
+  
