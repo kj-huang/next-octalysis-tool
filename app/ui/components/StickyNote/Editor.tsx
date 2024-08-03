@@ -12,22 +12,25 @@ const Editor = ({ cd, onEditingChange }: { cd: string; onEditingChange: (isEditi
   const [editor] = useLexicalComposerContext();
   const [isEditing, setIsEditing] = useState(false);
   const [floatingAnchorElem, setFloatingAnchorElem] = useState<HTMLDivElement | null>(null);
+  const [backgroundColor, setBackgroundColor] = useState<string>('rgba(202, 240, 248, 0.67)'); // Default background color
 
   const onRef = (_floatingAnchorElem: HTMLDivElement) => {
     if (_floatingAnchorElem !== null) {
       setFloatingAnchorElem(_floatingAnchorElem);
     }
   };
-
+  
 
   const handleDoubleClick = () => {
     setIsEditing(true);
     onEditingChange(true);
     editor.setEditable(true);
+    setBackgroundColor('#fff');
   };
   const handleSave = () => {
     setIsEditing(false);
     onEditingChange(false);
+    setBackgroundColor('rgba(202, 240, 248, 0.67)');
   };
 
   return (
@@ -36,7 +39,7 @@ const Editor = ({ cd, onEditingChange }: { cd: string; onEditingChange: (isEditi
             <RichTextPlugin
               contentEditable={
                 <div className={styles['editor']} ref={onRef}>
-                  <ContentEditable />
+                  <ContentEditable style={{ backgroundColor: backgroundColor }}/>
                 </div>
               }
               ErrorBoundary={LexicalErrorBoundary}
