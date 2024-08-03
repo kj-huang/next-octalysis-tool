@@ -4,7 +4,7 @@ import styles from './Mask.module.css';
 interface MaskProps {
   targetRef: React.RefObject<HTMLElement>;
   message: string;
-  position: 'top' | 'right' | 'bottom' | 'left';
+  position: 'top' | 'right' | 'bottom' | 'left' | string;
   onClick: () => void;
 }
 
