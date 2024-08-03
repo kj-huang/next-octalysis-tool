@@ -46,6 +46,7 @@ const Mask: React.FC<MaskProps> = ({ targetRef, message, position, onClick }) =>
             tooltipTop += rect.height / 2;
             tooltipLeft -= 10;
             break;
+          default: break
         }
 
         setTooltipPosition({ top: tooltipTop, left: tooltipLeft });
