@@ -9,7 +9,7 @@
  */
 
 import './index.css';
-import DropdownColorPicker from './ui/DropdownColorPicker';
+
 
 import {$isCodeHighlightNode} from '@lexical/code';
 import {$isLinkNode, TOGGLE_LINK_COMMAND} from '@lexical/link';
@@ -40,6 +40,7 @@ import {createPortal} from 'react-dom';
 import getDOMRangeRect from './utils/getDOMRangeRect';
 import { setFloatingElemPosition } from './utils/setFloatingElemPosition';
 import { getSelectedNode } from './utils/getSelectedNode';
+import DropdownColorPicker from './ui/DropDownColorPicker';
 
 
 
@@ -428,7 +429,7 @@ function useFloatingTextFormatToolbar(
       editor.registerCommand(
         INSERT_UNORDERED_LIST_COMMAND,
         () => {
-          insertList(editor, 'ul');
+          insertList(editor, 'bullet');
           return true;
         },
         COMMAND_PRIORITY_LOW,
@@ -436,7 +437,7 @@ function useFloatingTextFormatToolbar(
       editor.registerCommand(
         INSERT_ORDERED_LIST_COMMAND,
         () => {
-          insertList(editor, 'ol');
+          insertList(editor, 'number');
           return true;
         },
         COMMAND_PRIORITY_LOW,
