@@ -1,6 +1,5 @@
 /* Container for the entire component */
 .containers {
-  width: 80%;
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
@@ -18,7 +17,7 @@
 
 /* Title styling */
 .cdTitle {
-  font-size: 24px;
+  font-size: 16px;
   font-weight: bold;
   text-align: center;
   flex-grow: 1;
@@ -41,9 +40,6 @@
 
 /* Individual CD container styling */
 .cdContainer {
-  padding: 20px;
-  background-color: white;
-  border: 1px solid #ddd;
   border-radius: 8px;
   margin-bottom: 20px;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -62,6 +58,47 @@
   opacity: 1;
   transform: scale(1);
 }
+
+
+.header {
+  background-color: #0070f3;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 2px solid #005bb5;
+}
+
+.toggleButton {
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 20px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggleButton:hover {
+  background-color: #005bb5;
+}
+
+.navBarButton {
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.navBarButton:hover {
+  background-color: #005bb5;
+}
+
+/* Other existing styles */
+
 
 /* Landscape orientation handling */
 @media screen and (orientation: landscape) {

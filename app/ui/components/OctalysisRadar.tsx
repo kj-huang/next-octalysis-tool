@@ -115,7 +115,8 @@ const OctalysisRadar = ({ width, height }: { width: number; height: number }) =>
   };
 
   return (
-    <div id='octalysis-radar' className='home' style={{ display: 'grid', placeItems: 'center', height: '100vh' }}>
+    //Mobile UI should make no height so that it will not make the empty page
+    <div id='octalysis-radar' className='home' style={{ display: 'grid', placeItems: 'center', height: (width < 800) ? ' ': '100vh' }}>
       <div style={{ position: 'relative' }}>
         <canvas id='octalysis' ref={canvasRef}></canvas>
         <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>

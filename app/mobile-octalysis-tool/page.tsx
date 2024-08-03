@@ -30,7 +30,7 @@ export default function MobileOctalysisTool() {
 
     setRendererDimensions({
       width: windowWidth,
-      height: windowHeight - 250,
+      height: windowHeight - 300,
     });
   };
 
@@ -65,25 +65,28 @@ export default function MobileOctalysisTool() {
   return (
     <OctalysisProvider>
       <div>
+        <header className={styles.header}>
+          <h1>Mobile Octalysis Tool</h1>
+        </header>
+
         <div id='main-area' className={styles.mainArea}>
-          {showCanvas ? (
-            <OctalysisRadar width={rendererDimensions.width} height={rendererDimensions.height}></OctalysisRadar>
-          ) : (
-            <OctalysisScorePanel></OctalysisScorePanel>
-          )}
-          <button onClick={toggleView}>
-            {showCanvas ? 'Switch to Scoreboard' : 'Switch to Canvas'}
-          </button>
+          <OctalysisRadar width={rendererDimensions.width} height={rendererDimensions.height}></OctalysisRadar>
         </div>
 
+        {/* Style Button */}
+        <button onClick={toggleView} className={styles.toggleButton}>
+          {showCanvas ? 'Switch to Scoreboard' : 'Switch to Editor'}
+        </button>
+
+        {showCanvas ? (
         <div className={styles.containers}>
           <div className={styles.navBar}>
             <button onClick={handleLeftClick} className={styles.navBarButton}>
-              &lt; {/* Left arrow */}
+            <span className="material-symbols-outlined">chevron_left</span>
             </button>
             <div className={styles.cdTitle}>{cdTitles[currentCd - 1]}</div>
             <button onClick={handleRightClick} className={styles.navBarButton}>
-              &gt; {/* Right arrow */}
+            <span className="material-symbols-outlined">chevron_right</span>
             </button>
           </div>
 
@@ -100,6 +103,9 @@ export default function MobileOctalysisTool() {
             </div>
           ))}
         </div>
+        ) : (
+          <OctalysisScorePanel></OctalysisScorePanel>
+        )}
       </div>
     </OctalysisProvider>
   );
