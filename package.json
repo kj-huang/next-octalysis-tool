@@ -14,6 +14,7 @@
   "dependencies": {
     "@lexical/react": "^0.17.0",
     "@lexical/rich-text": "^0.17.0",
+    "@xyflow/react": "^12.0.4",
     "html2canvas": "^1.4.1",
     "next": "14.2.5",
     "react": "^18",

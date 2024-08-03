@@ -8,7 +8,7 @@ import PlaygroundEditorTheme from './FloatingTextFormatToolbarPlugin/utils/Playg
 
 const StickyNote: React.FC<{ cd: string }> = ({ cd }) => {
   const { data } = useOctalysis();
-  const [paragraph, setParagraph] = useState(data[cd].coreDriveDescription.paragraph);
+  const [paragraph] = useState(data[cd].coreDriveDescription.paragraph);
   const [isEditing, setIsEditing] = useState(false);
   const [pos, setPos] = useState({ x: data[cd].coreDriveDescription.xPos, y: data[cd].coreDriveDescription.yPos });
   const [size, setSize] = useState({

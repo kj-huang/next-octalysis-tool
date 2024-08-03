@@ -15,7 +15,6 @@ export default function OctalysisTool() {
   const octalysisHeaderRef = useRef<HTMLDivElement>(null);
   const [rendererDimensions, setRendererDimensions] = useState({ width: 0, height: 0 });
   const [appDimensions, setAppDimensions] = useState({ width: 0, height: 0 });
-  const [isEditing, setIsEditing] = useState(true);
 
   const calculateDimensions = () => {
     const editorPanelWidth = editorControlPanelRef.current?.offsetWidth || 0;

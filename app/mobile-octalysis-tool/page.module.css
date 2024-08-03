@@ -1,24 +1,90 @@
+/* Container for the entire component */
+.containers {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation bar styling */
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Title styling */
+.cdTitle {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  flex-grow: 1;
+}
+
+/* Button styling */
+.navBarButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.navBarButton:hover {
+  background-color: #0056b3;
+}
+
+/* Individual CD container styling */
+.cdContainer {
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hidden state */
+.hidden {
+  display: none;
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* Visible state */
+.visible {
+  display: block;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Landscape orientation handling */
 @media screen and (orientation: landscape) {
-    #main-area, #containers {
-      display: none;
-    }
-  
-    #landscape-message {
-      display: block;
-      text-align: center;
-      padding: 20px;
-      font-size: 18px;
-      color: red;
-    }
+  .mainArea, .containers {
+    display: none;
   }
-  
-  @media screen and (orientation: portrait) {
-    #landscape-message {
-      display: none;
-    }
-  
-    #main-area, #containers {
-      display: block;
-    }
+
+  .landscapeMessage {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: red;
   }
-  
+}
+
+/* Portrait orientation handling */
+@media screen and (orientation: portrait) {
+  .landscapeMessage {
+    display: none;
+  }
+
+  .mainArea, .containers {
+    display: block;
+  }
+}
