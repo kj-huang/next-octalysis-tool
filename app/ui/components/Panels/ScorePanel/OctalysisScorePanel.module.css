@@ -1,0 +1,17 @@
+.score-board{
+    background: #fafafa;
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.divided-line{
+    border-top: 1px solid #e0e0e0;
+    margin: 16px 0;
+}
+
+.text-overline {
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 2rem;
+    letter-spacing: 0.16667em;
+}

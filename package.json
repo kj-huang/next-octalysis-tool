@@ -1,0 +1,38 @@
+{
+  "name": "octalysis-tool",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "prettier": "prettier '**/*.{css,js,ts,tsx}' --ignore-path ./.prettierignore --check",
+    "prettier-fix": "prettier '**/*.{css,js,ts,tsx}' --ignore-path ./.prettierignore --write --ignore-unknown",
+    "lint-error": "next lint --quiet",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@lexical/react": "^0.17.0",
+    "@lexical/rich-text": "^0.17.0",
+    "html2canvas": "^1.4.1",
+    "next": "14.2.5",
+    "react": "^18",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18",
+    "react-range": "^1.9.2",
+    "react-rnd": "^10.4.11"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-chartjs-2": "^2.5.7",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
+    "@typescript-eslint/parser": "^7.17.0",
+    "eslint": "^8",
+    "eslint-config-next": "^14.2.5",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "3.3.2",
+    "typescript": "^5"
+  }
+}

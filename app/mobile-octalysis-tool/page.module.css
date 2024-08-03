@@ -1,0 +1,24 @@
+@media screen and (orientation: landscape) {
+    #main-area, #containers {
+      display: none;
+    }
+  
+    #landscape-message {
+      display: block;
+      text-align: center;
+      padding: 20px;
+      font-size: 18px;
+      color: red;
+    }
+  }
+  
+  @media screen and (orientation: portrait) {
+    #landscape-message {
+      display: none;
+    }
+  
+    #main-area, #containers {
+      display: block;
+    }
+  }
+  

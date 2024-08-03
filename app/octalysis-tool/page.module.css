@@ -1,0 +1,18 @@
+.editor{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.editor-control-panel{
+    display: flex;
+    width: 25%;
+    flex-direction: column;
+}
+
+.editor-canvas {
+    display: flex;
+    width: 75%;
+    position: relative;
+}
