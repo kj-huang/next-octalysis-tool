@@ -10,9 +10,9 @@ const SaveBtn = ({ cd, toggleEdit }: { cd: string, toggleEdit: () => void }) => 
         editor.update(async () => {
           const editorState = editor.getEditorState();
           const json = JSON.stringify(editorState.toJSON());
-            updateCoreDriveDescription(cd, json);
-          console.log(json);
+          updateCoreDriveDescription(cd, json);
           toggleEdit();
+          editor.setEditable(false);
         });
     
       };

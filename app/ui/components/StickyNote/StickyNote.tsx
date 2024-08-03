@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { useOctalysis } from '@/app/contexts/OctalysisContext';
 import { Rnd } from 'react-rnd';
 import Editor from './Editor';
-
+import { LexicalComposer } from '@lexical/react/LexicalComposer';
+import {ListItemNode, ListNode} from '@lexical/list';
+import PlaygroundEditorTheme from './FloatingTextFormatToolbarPlugin/utils/PlaygroundEditorTheme';
 
 const StickyNote: React.FC<{ cd: string }> = ({ cd }) => {
   const { data } = useOctalysis();
+  const [paragraph, setParagraph] = useState(data[cd].coreDriveDescription.paragraph);
   const [isEditing, setIsEditing] = useState(false);
   const [pos, setPos] = useState({ x: data[cd].coreDriveDescription.xPos, y: data[cd].coreDriveDescription.yPos });
   const [size, setSize] = useState({
@@ -21,6 +24,16 @@ const StickyNote: React.FC<{ cd: string }> = ({ cd }) => {
     });
   };
 
+  const editorConfig = {
+    namespace: 'Octalysis Editor',
+    editorState: paragraph,
+    nodes: [ListNode, ListItemNode],
+    onError: (error: any) => {
+      console.error(error);
+    },
+    theme: PlaygroundEditorTheme
+  };
+  
   return (
     <Rnd
       position={{ x: pos.x, y: pos.y }}
@@ -33,7 +46,9 @@ const StickyNote: React.FC<{ cd: string }> = ({ cd }) => {
       enableResizing={!isEditing}
       style={{ backgroundColor: 'rgba(202, 240, 248, 0.67)', padding: '1%' }}
     >
-      <Editor cd={cd} onEditingChange={setIsEditing}></Editor>
+      <LexicalComposer initialConfig={editorConfig}>
+        <Editor cd={cd} onEditingChange={setIsEditing}></Editor>
+      </LexicalComposer>
     </Rnd>
   );
 };
