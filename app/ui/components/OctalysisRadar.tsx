@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useOctalysis } from '@/app/contexts/OctalysisContext';
 import ProjectNameEditor from './ProjectNameEditor';
 
-const OctalysisRadar = ({width, height}: {width: number, height: number}) => {
+const OctalysisRadar = ({ width, height }: { width: number; height: number }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const degToPi = Math.PI / 180;
@@ -63,7 +63,7 @@ const OctalysisRadar = ({width, height}: {width: number, height: number}) => {
     grd.addColorStop(1, '#009EF8');
 
     points.forEach((p: any) => {
-      if(width < 800){
+      if (width < 800) {
         //mobile view
         const pxy = {
           x: (p.r * 10 + p.r * 4 + 120) * Math.cos(p.angle),
@@ -96,11 +96,11 @@ const OctalysisRadar = ({width, height}: {width: number, height: number}) => {
       const wrh = bg.width / bg.height;
       let nw = 0;
 
-      if(width < 800){
+      if (width < 800) {
         //mobile view
-        nw =350;
+        nw = 350;
       } else {
-        nw =500;
+        nw = 500;
       }
 
       let nh = nw / wrh;
@@ -115,9 +115,13 @@ const OctalysisRadar = ({width, height}: {width: number, height: number}) => {
   };
 
   return (
-    <div id='octalysis-radar' className='home'>
-      <canvas id='octalysis' ref={canvasRef}></canvas>
-      <ProjectNameEditor />
+    <div id='octalysis-radar' className='home' style={{ display: 'grid', placeItems: 'center', height: '100vh' }}>
+      <div style={{ position: 'relative' }}>
+        <canvas id='octalysis' ref={canvasRef}></canvas>
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+          <ProjectNameEditor />
+        </div>
+      </div>
       <div style={{ display: 'none' }}>{JSON.stringify(getPoints())}</div>
     </div>
   );

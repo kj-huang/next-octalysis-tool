@@ -22,7 +22,7 @@ const ProjectNameEditor: React.FC = () => {
   };
 
   return (
-    <div style={{position: 'absolute', top: '35%', left: '45%', fontSize: '18pt', width: '100px', textAlign: 'center' }}>
+    <div style={{fontSize: '18pt', width: '100px', textAlign: 'center' }}>
       {isEditing ? (
         <input
           type='text'
