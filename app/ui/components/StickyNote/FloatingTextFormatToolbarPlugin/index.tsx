@@ -9,6 +9,7 @@
  */
 
 import './index.css';
+import DropdownColorPicker from './ui/DropdownColorPicker';
 
 import {$isCodeHighlightNode} from '@lexical/code';
 import {$isLinkNode, TOGGLE_LINK_COMMAND} from '@lexical/link';
@@ -25,12 +26,13 @@ import {
   SELECTION_CHANGE_COMMAND,
 } from 'lexical';
 import {
-  $isListNode,
-  INSERT_CHECK_LIST_COMMAND,
+  $getSelectionStyleValueForProperty,
+  $patchStyleText,
+} from '@lexical/selection';
+import {
   INSERT_ORDERED_LIST_COMMAND,
   INSERT_UNORDERED_LIST_COMMAND,
   insertList,
-  ListNode,
 } from '@lexical/list';
 import {Dispatch, useCallback, useEffect, useRef, useState} from 'react';
 import * as React from 'react';
@@ -52,6 +54,7 @@ function TextFormatFloatingToolbar({
   isStrikethrough,
   isSubscript,
   isSuperscript,
+  fontColor,
   setIsLinkEditMode,
 }: {
   editor: LexicalEditor;
@@ -64,9 +67,11 @@ function TextFormatFloatingToolbar({
   isSubscript: boolean;
   isSuperscript: boolean;
   isUnderline: boolean;
+  fontColor: string;
   setIsLinkEditMode: Dispatch<boolean>;
 }): JSX.Element {
   const popupCharStylesEditorRef = useRef<HTMLDivElement | null>(null);
+  
 
   const insertLink = useCallback(() => {
     if (!isLink) {
@@ -196,6 +201,28 @@ function TextFormatFloatingToolbar({
     );
   }, [editor, $updateTextFormatFloatingToolbar]);
 
+  const applyStyleText = useCallback(
+    (styles: Record<string, string>, skipHistoryStack?: boolean) => {
+      editor.update(
+        () => {
+          const selection = $getSelection();
+          if (selection !== null) {
+            $patchStyleText(selection, styles);
+          }
+        },
+        skipHistoryStack ? {tag: 'historic'} : {},
+      );
+    },
+    [editor],
+  );
+
+  const onFontColorSelect = useCallback(
+    (value: string, skipHistoryStack: boolean) => {
+      applyStyleText({color: value}, skipHistoryStack);
+    },
+    [applyStyleText],
+  );
+
   return (
     <div ref={popupCharStylesEditorRef} className="floating-text-format-popup">
       {editor.isEditable() && (
@@ -286,6 +313,15 @@ function TextFormatFloatingToolbar({
             aria-label="ordered list">
             <i className="format ordered-list" />
           </button>
+          <DropdownColorPicker
+            disabled={false}
+            buttonClassName="popup-item spaced color-picker"
+            buttonAriaLabel="Formatting text color"
+            buttonIconClassName="icon font-color"
+            color={fontColor}
+            onChange={onFontColorSelect}
+            title="text color"
+          />
         </>
       )}
     </div>
@@ -297,6 +333,7 @@ function useFloatingTextFormatToolbar(
   anchorElem: HTMLElement,
   setIsLinkEditMode: Dispatch<boolean>,
 ): JSX.Element | null {
+  const [fontColor, setFontColor] = useState<string>('#000');
   const [isText, setIsText] = useState(false);
   const [isLink, setIsLink] = useState(false);
   const [isBold, setIsBold] = useState(false);
@@ -341,6 +378,10 @@ function useFloatingTextFormatToolbar(
       setIsSubscript(selection.hasFormat('subscript'));
       setIsSuperscript(selection.hasFormat('superscript'));
       setIsCode(selection.hasFormat('code'));
+
+      setFontColor(
+        $getSelectionStyleValueForProperty(selection, 'color', '#000'),
+      );
 
       // Update links
       const parent = node.getParent();
@@ -419,6 +460,7 @@ function useFloatingTextFormatToolbar(
       isSuperscript={isSuperscript}
       isUnderline={isUnderline}
       isCode={isCode}
+      fontColor={fontColor}
       setIsLinkEditMode={setIsLinkEditMode}
     />,
     anchorElem,

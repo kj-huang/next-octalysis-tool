@@ -125,3 +125,7 @@
   i.justify-align {
     background-image: url(/icons/justify.svg);
   }
+
+  i.color-picker{
+    background-image: url(/icons/font-color.svg);
+  }
