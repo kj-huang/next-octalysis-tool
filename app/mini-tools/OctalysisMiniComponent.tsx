@@ -15,11 +15,6 @@ export default function OctalysisMiniComponent() {
   const searchParams = useSearchParams();
   const session = searchParams.get('session');
 
-  if (!session) {
-    throw new Error('Session expired. Please refresh the page.');
-  }
-
-
   // Access context data
   const contextData = useOctalysis();
 
