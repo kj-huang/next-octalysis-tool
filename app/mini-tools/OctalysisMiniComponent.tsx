@@ -13,7 +13,7 @@ export default function OctalysisMiniComponent() {
   const [rendererDimensions, setRendererDimensions] = useState({ width: 0, height: 0 });
   
   const searchParams = useSearchParams();
-  const session = searchParams.get('session');
+  const session = searchParams.get('session') || '';
 
   // Access context data
   const contextData = useOctalysis();
