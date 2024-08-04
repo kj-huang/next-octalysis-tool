@@ -16,11 +16,11 @@ export default function OctalysisMiniComponent() {
   const session = searchParams.get('session') || '';
 
   // Access context data
-  const contextData = useOctalysis();
+  const {data, loadData} = useOctalysis();
 
   useEffect(() => {
     // (Optional) Restore context data from sessionStorage
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && session) {
       const savedContextData = sessionStorage.getItem(session);
       if (savedContextData) {
         // Assuming your context has a method to update its data
@@ -28,7 +28,7 @@ export default function OctalysisMiniComponent() {
         // You can implement a context update function to apply this data
         // context.updateContext(parsedData);
         console.log('Restored context data:', parsedData);
-        contextData.data = parsedData.data;
+        loadData(parsedData);
       }
     }
   }, [session]);
@@ -59,14 +59,10 @@ export default function OctalysisMiniComponent() {
     };
   }, []);
 
-  useEffect(() => {
-    // Save context data to sessionStorage
-    if (typeof window !== 'undefined' && contextData) {
-      sessionStorage.setItem(session, JSON.stringify(contextData));
-    }
-  }, [contextData, session]);
-
-
+  // Save context data to sessionStorage whenever it changes
+  const handleSave = () => {
+    sessionStorage.setItem(session, JSON.stringify(data));
+  }
 
   return (
     <>
@@ -105,10 +101,35 @@ export default function OctalysisMiniComponent() {
             position: 'absolute',
             width: '30%',
             left: '0px', // You can adjust the position as needed
-            top: '0px', // You can adjust the position as needed
+            top: '40px', // You can adjust the position as needed
           }}
         >
           <OctalysisValue />
+
+          <button
+        onClick={handleSave}
+        style={{
+          position: 'absolute',
+          zIndex: 2,
+          padding: '10px 20px',
+          backgroundColor: '#007bff',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          transition: 'background-color 0.3s ease',
+          fontSize: '16px',
+        }}
+        onMouseEnter={(e: React.MouseEvent<HTMLElement>) => {
+          (e.target as HTMLElement).style.backgroundColor = '#0056b3';
+        }}
+        onMouseLeave={(e: React.MouseEvent<HTMLElement>) => {
+          (e.target as HTMLElement).style.backgroundColor = '#007bff';
+        }}
+      >
+Save
+      </button>
         </div>
       )}
     </>
