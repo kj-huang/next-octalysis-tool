@@ -11,6 +11,7 @@ const SidebarEdgeSelectors: React.FC<SidebarEdgeSelectorsProps> = ({ onSelectEdg
 
   return (
     <aside className='edge-selector-container'>
+      <p>Interactions</p>
       <select onChange={handleSelectionChange}>
         <option value="leads-to">Leads To</option>
         <option value="obtains">Obtains</option>

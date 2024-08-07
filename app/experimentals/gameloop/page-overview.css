@@ -23,6 +23,7 @@ aside {
     padding: 10px;
     margin-bottom: 10px;
     font-size: 12px;
+    text-align: center;
 }
 
 .game-element-node.function-node {

@@ -70,15 +70,13 @@ export function EnablesEdge({ id, sourceX, sourceY, targetX, targetY }: EdgeProp
   );
 }
 
-export function BoosterEdge({ id, sourceX, sourceY, targetX, targetY, markerEnd}: EdgeProps) {
+export function BoosterEdge({ id, sourceX, sourceY, targetX, targetY}: EdgeProps) {
   const [edgePath] = getStraightPath({
     sourceX,
     sourceY,
     targetX,
     targetY,
   });
-
-  console.log(`For visibility, log url here: markerEnd [${markerEnd}]`);
 
   return (
     <>

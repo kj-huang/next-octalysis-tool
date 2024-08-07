@@ -8,12 +8,13 @@ const Sidebar: React.FC = () => {
 
   return (
     <aside>
+      <p>Nodes</p>
       <div
         className="game-element-node function-node"
         onDragStart={(event) => onDragStart(event, 'functionNode')}
         draggable
       >
-        Function Node
+        Function
       </div>
 
       <div
@@ -21,7 +22,7 @@ const Sidebar: React.FC = () => {
         onDragStart={(event) => onDragStart(event, 'assetNode')}
         draggable
       >
-        Asset Node
+        Asset
       </div>
 
       <div
@@ -29,7 +30,7 @@ const Sidebar: React.FC = () => {
         onDragStart={(event) => onDragStart(event, 'actionNode')}
         draggable
       >
-        Action Node
+        Action
       </div>
 
       <div
@@ -37,7 +38,15 @@ const Sidebar: React.FC = () => {
         onDragStart={(event) => onDragStart(event, 'statusNode')}
         draggable
       >
-        Status Node
+        Status
+      </div>
+
+      <div
+        className=""
+        onDragStart={(event) => onDragStart(event, 'textNode')}
+        draggable
+      >
+        T
       </div>
     </aside>
   );

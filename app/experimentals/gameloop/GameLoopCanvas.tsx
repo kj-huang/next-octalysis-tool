@@ -24,6 +24,7 @@ import { ActionNode } from './CustomNodes/ActionNode';
 import { StatusNode } from './CustomNodes/StatusNode';
 import { SidebarEdgeSelectors } from './SidebarEdgeSelectors';
 import { BoosterEdge, EnablesEdge, LeadsToEdge, ObtainsEdge } from './CustomEdges';
+import { TextNode } from './Annotations';
 
 // This prop is mandatory!
 const defaultEdgeOptions: DefaultEdgeOptions = {
@@ -39,6 +40,7 @@ const nodeTypes = {
   assetNode: AssetNode,
   actionNode: ActionNode,
   statusNode: StatusNode,
+  textNode: TextNode,
 };
 
 const edgeTypes = {
@@ -102,6 +104,10 @@ function GameLoopCanvas() {
         position,
         data: { label: `${type} node` },
       };
+
+      if (type === 'textNode') {
+        newNode.data = { label: 'Text' };
+      }
 
       setNodes((nds) => nds.concat(newNode));
     },
