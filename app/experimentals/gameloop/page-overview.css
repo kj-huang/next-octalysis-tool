@@ -22,6 +22,7 @@ aside {
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
+    font-size: 12px;
 }
 
 .game-element-node.function-node {
@@ -35,6 +36,7 @@ aside {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1%;
 }
 
 
@@ -49,6 +51,7 @@ aside {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1%;
 }
 
 .game-element-node.action-node {
@@ -62,6 +65,7 @@ aside {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1%;
 }
 
 .game-element-node.status-node {
@@ -75,4 +79,11 @@ aside {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1%;
+}
+
+.edge-selector-container{
+    position: fixed;
+    top: 45%;
+    left: 1%;
 }
