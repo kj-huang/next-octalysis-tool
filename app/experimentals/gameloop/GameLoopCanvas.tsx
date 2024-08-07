@@ -12,7 +12,7 @@ import {
   applyNodeChanges,
   useReactFlow,
   reconnectEdge,
-  DefaultEdgeOptions,
+  type DefaultEdgeOptions,
   MarkerType,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
