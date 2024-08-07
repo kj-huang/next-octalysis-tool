@@ -1,0 +1,12 @@
+  .editable-text:focus {
+    border: 1px solid #ccc;
+    outline: none;
+  }
+
+  .function-node,  .asset-node, .action-node, .status-node{
+    color: white;
+  }
+
+  .paragraph{
+    font-size: 12px;
+  }

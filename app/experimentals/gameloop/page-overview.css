@@ -1,0 +1,90 @@
+
+.reactflow-wrapper {
+    flex-grow: 1;
+    height: 100%;
+  }
+
+aside {
+    border-right: 1px solid #eee;
+    padding: 15px 10px;
+    font-size: 12px;
+    background: #fcfcfc;
+    position: fixed;
+    top: 5%;
+    left: 1%;
+    width: min-content;
+    height: min-content;
+}
+
+.game-element-node {
+    background-color: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.game-element-node.function-node {
+    background-color: green;
+    color: white;
+}
+
+.react-flow__node-functionNode {
+    background-color: green;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+}
+
+
+.game-element-node.asset-node {
+    background-color: orange;
+    color: white;
+}
+
+.react-flow__node-assetNode {
+    background-color: orange;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+}
+
+.game-element-node.action-node {
+    background-color: blue;
+    color: white;
+}
+
+.react-flow__node-actionNode {
+    background-color: blue;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+}
+
+.game-element-node.status-node {
+    background-color: red;
+    color: white;
+}
+
+.react-flow__node-statusNode {
+    background-color: red;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+}
+
+.edge-selector-container{
+    position: fixed;
+    top: 45%;
+    left: 1%;
+}
