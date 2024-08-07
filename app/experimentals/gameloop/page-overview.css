@@ -1,0 +1,22 @@
+
+.reactflow-wrapper {
+    flex-grow: 1;
+    height: 100%;
+  }
+
+aside {
+    border-right: 1px solid #eee;
+    padding: 15px 10px;
+    font-size: 12px;
+    background: #fcfcfc;
+    position: fixed;
+    top: 5%;
+    left: 1%;
+    width: min-content;
+    height: min-content;
+}
+
+
+.react-flow__node-functionNode {
+    background-color: green;
+}
