@@ -29,8 +29,8 @@ export default function MobileOctalysisTool() {
     const windowHeight = window.innerHeight;
 
     setRendererDimensions({
-      width: windowWidth,
-      height: windowHeight,
+      width: windowWidth - 25,
+      height: windowHeight - 100,
     });
   };
 
