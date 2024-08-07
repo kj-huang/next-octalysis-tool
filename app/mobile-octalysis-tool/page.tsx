@@ -30,7 +30,7 @@ export default function MobileOctalysisTool() {
 
     setRendererDimensions({
       width: windowWidth,
-      height: windowHeight - 300,
+      height: windowHeight - 400,
     });
   };
 

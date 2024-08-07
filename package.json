@@ -9,7 +9,8 @@
     "prettier": "prettier '**/*.{css,js,ts,tsx}' --ignore-path ./.prettierignore --check",
     "prettier-fix": "prettier '**/*.{css,js,ts,tsx}' --ignore-path ./.prettierignore --write --ignore-unknown",
     "lint-error": "next lint --quiet",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typescript": "tsc --noEmit"
   },
   "dependencies": {
     "@lexical/react": "^0.17.0",

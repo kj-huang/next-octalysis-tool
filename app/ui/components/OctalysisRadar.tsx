@@ -66,8 +66,8 @@ const OctalysisRadar = ({ width, height }: { width: number; height: number }) =>
       if (width < 800) {
         //mobile view
         const pxy = {
-          x: (p.r * 10 + p.r * 4 + 120) * Math.cos(p.angle),
-          y: (p.r * 10 + p.r * 4 + 120) * Math.sin(p.angle),
+          x: (p.r * 10 + p.r * 4 + 80) * Math.cos(p.angle),
+          y: (p.r * 10 + p.r * 4 + 80) * Math.sin(p.angle),
         };
         ctx.lineTo(pxy.x, pxy.y);
       } else {
@@ -98,7 +98,7 @@ const OctalysisRadar = ({ width, height }: { width: number; height: number }) =>
 
       if (width < 800) {
         //mobile view
-        nw = 350;
+        nw = 250;
       } else {
         nw = 500;
       }

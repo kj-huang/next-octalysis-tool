@@ -3,7 +3,7 @@ import {ListItemNode, ListNode} from '@lexical/list';
 import { useOctalysis } from '@/app/contexts/OctalysisContext';
 import { useState } from 'react';
 import PlaygroundEditorTheme from '../StickyNote/FloatingTextFormatToolbarPlugin/utils/PlaygroundEditorTheme';
-import Editor from '../StickyNote/Editor';
+import Editor from './Editor';
 
 
 const MobileEditor: React.FC<{ cd: string }> = ({ cd }) => {
@@ -22,7 +22,7 @@ const MobileEditor: React.FC<{ cd: string }> = ({ cd }) => {
 
     return (
         <LexicalComposer initialConfig={editorConfig}>
-            <Editor cd={cd} onEditingChange={()=>{}}></Editor>
+            <Editor cd={cd}></Editor>
         </LexicalComposer>
     )
 }
