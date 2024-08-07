@@ -1,0 +1,28 @@
+.word-element {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .editable-text {
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: text;
+    padding: 5px;
+    border: 1px solid transparent;
+    white-space: pre-wrap; /* Allows line breaks while preserving spaces */
+    overflow-wrap: break-word; /* Ensures text wraps within the container */
+  }
+  
+  .editable-text:focus {
+    border: 1px solid #ccc;
+    outline: none;
+  }
+
+  .function-node{
+    color: white;
+  }

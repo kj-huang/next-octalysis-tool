@@ -8,9 +8,8 @@ const Sidebar: React.FC = () => {
 
   return (
     <aside>
-      {/* <div className="description">You can drag these nodes to the pane on the right.</div> */}
       <div
-        className="dndnode input"
+        className="game-element-node function-node"
         onDragStart={(event) => onDragStart(event, 'functionNode')}
         draggable
       >

@@ -16,7 +16,23 @@ aside {
     height: min-content;
 }
 
+.game-element-node {
+    background-color: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.game-element-node.function-node {
+    background-color: green;
+    color: white;
+}
 
 .react-flow__node-functionNode {
     background-color: green;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
