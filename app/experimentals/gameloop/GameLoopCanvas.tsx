@@ -11,32 +11,25 @@ import {
   applyEdgeChanges,
   applyNodeChanges,
   useReactFlow,
+  reconnectEdge,
 } from '@xyflow/react';
- 
 import '@xyflow/react/dist/style.css';
-import FunctionNode from './CustomNodes/FunctionNode';
-
 import './page-overview.css';
 import Sidebar from './Sidebar';
+import {FunctionNode} from './CustomNodes/FunctionNode';
+import { AssetNode } from './CustomNodes/AssetNode';
+import { ActionNode } from './CustomNodes/ActionNode';
+import { StatusNode } from './CustomNodes/StatusNode';
 
-const initialNodes = [
-  { id: '1', type: 'functionNode', position: { x: 0, y: 0 }, data: { label: '1' } },
-  { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
-  {
-    id: '3',
-    type: 'input',
-    data: { label: 'input node' },
-    position: { x: 250, y: 5 },
-    width: 180,
-    height: 40,
-  },
-];
+const initialNodes = [];
 
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
+const initialEdges = [];
  
 const nodeTypes = { 
-  functionNode: FunctionNode
-  // assetNode: 
+  functionNode: FunctionNode,
+  assetNode: AssetNode,
+  actionNode: ActionNode,
+  statusNode: StatusNode
 };
 
 function GameLoopCanvas() {
@@ -59,6 +52,11 @@ function GameLoopCanvas() {
     [setEdges],
   );
 
+  const onReconnect = useCallback(
+    (oldEdge: any, newConnection: any) =>
+      setEdges((els) => reconnectEdge(oldEdge, newConnection, els)),
+    []);
+
   const onDragOver = useCallback((event: any) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = 'move';
@@ -78,9 +76,6 @@ function GameLoopCanvas() {
         return;
       }
 
-      // project was renamed to screenToFlowPosition
-      // and you don't need to subtract the reactFlowBounds.left/top anymore
-      // details: https://reactflow.dev/whats-new/2023-11-10
       const position = screenToFlowPosition({
         x: event.clientX,
         y: event.clientY,
@@ -108,6 +103,7 @@ function GameLoopCanvas() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        onReconnect={onReconnect}
         fitView
         onDrop={onDrop}
         onDragOver={onDragOver}

@@ -1,5 +1,5 @@
 import styles from './Node.module.css';
-import { useCallback, useState, useRef, useEffect } from 'react';
+import { useCallback, useState, useRef } from 'react';
 import { type NodeProps, type Node, NodeResizer, Handle, Position } from '@xyflow/react';
 
 export type fNode = Node<
@@ -9,7 +9,7 @@ export type fNode = Node<
   'functionName'
 >;
 
-export default function FunctionNode(props: NodeProps<fNode>) {
+function FunctionNode(props: NodeProps<fNode>) {
   const [functionName, setFunctionName] = useState(props.data?.functionName ?? 'Function Name');
   const [isResizerActive, setIsResizerActive] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -60,3 +60,5 @@ export default function FunctionNode(props: NodeProps<fNode>) {
     </div>
   );
 }
+
+export { FunctionNode }; 

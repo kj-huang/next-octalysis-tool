@@ -23,6 +23,6 @@
     outline: none;
   }
 
-  .function-node{
+  .function-node,  .asset-node, .action-node, .status-node{
     color: white;
   }

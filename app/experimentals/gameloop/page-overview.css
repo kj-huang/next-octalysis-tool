@@ -36,3 +36,43 @@ aside {
     align-items: center;
     justify-content: center;
 }
+
+
+.game-element-node.asset-node {
+    background-color: orange;
+    color: white;
+}
+
+.react-flow__node-assetNode {
+    background-color: orange;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-element-node.action-node {
+    background-color: blue;
+    color: white;
+}
+
+.react-flow__node-actionNode {
+    background-color: blue;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-element-node.status-node {
+    background-color: red;
+    color: white;
+}
+
+.react-flow__node-statusNode {
+    background-color: red;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
