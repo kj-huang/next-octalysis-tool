@@ -62,6 +62,7 @@ function GameLoopCanvas() {
   const onEdgesChange = useCallback((changes: any) => setEdges((eds) => applyEdgeChanges(changes, eds)), [setEdges]);
 
   const onConnect = useCallback((connection: any) => {
+    console.log('onConnect', connection);
     const edge = { ...connection, type: selectedEdgeType };
     setEdges((eds) => addEdge(edge, eds))
   }, [setEdges, selectedEdgeType]);
@@ -129,6 +130,8 @@ function GameLoopCanvas() {
           fitView
           onDrop={onDrop}
           onDragOver={onDragOver}
+          onConnectStart={(e) => console.log('onConnectStart', e)}
+          onConnectEnd={(e) => console.log('onConnectEnd', e)}
           defaultEdgeOptions={defaultEdgeOptions}
         >
           <Controls />

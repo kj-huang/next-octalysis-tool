@@ -1,8 +1,12 @@
-import { BaseEdge, getStraightPath } from '@xyflow/react';
+import { BaseEdge, getStraightPath, useInternalNode } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
+
+import { getEdgeParams } from '../utlis';
 
 type EdgeProps = {
     id: string;
+    source: string;
+    target: string;
     sourceX: number;
     sourceY: number;
     targetX: number;
@@ -10,14 +14,22 @@ type EdgeProps = {
     markerEnd?: string;
 };
 
-export function LeadsToEdge({ id, sourceX, sourceY, targetX, targetY }: EdgeProps) {
-  const [edgePath] = getStraightPath({
-    sourceX,
-    sourceY,
-    targetX,
-    targetY,
-  });
-
+export function LeadsToEdge({ id,source, target }: EdgeProps) {
+    const sourceNode = useInternalNode(source);
+    const targetNode = useInternalNode(target);
+  
+    if (!sourceNode || !targetNode) {
+      return null;
+    }
+  
+    const { sx, sy, tx, ty } = getEdgeParams(sourceNode, targetNode);
+  
+    const [edgePath] = getStraightPath({
+      sourceX: sx,
+      sourceY: sy,
+      targetX: tx,
+      targetY: ty,
+    });
   return (
     <>
       <BaseEdge
@@ -30,13 +42,22 @@ export function LeadsToEdge({ id, sourceX, sourceY, targetX, targetY }: EdgeProp
   );
 }
 
-export function ObtainsEdge({ id, sourceX, sourceY, targetX, targetY }: EdgeProps) {
-  const [edgePath] = getStraightPath({
-    sourceX,
-    sourceY,
-    targetX,
-    targetY,
-  });
+export function ObtainsEdge({ id, source, target }: EdgeProps) {
+    const sourceNode = useInternalNode(source);
+    const targetNode = useInternalNode(target);
+  
+    if (!sourceNode || !targetNode) {
+      return null;
+    }
+  
+    const { sx, sy, tx, ty } = getEdgeParams(sourceNode, targetNode);
+  
+    const [edgePath] = getStraightPath({
+      sourceX: sx,
+      sourceY: sy,
+      targetX: tx,
+      targetY: ty,
+    });
 
   return (
     <>
@@ -50,13 +71,22 @@ export function ObtainsEdge({ id, sourceX, sourceY, targetX, targetY }: EdgeProp
   );
 }
 
-export function EnablesEdge({ id, sourceX, sourceY, targetX, targetY }: EdgeProps) {
-  const [edgePath] = getStraightPath({
-    sourceX,
-    sourceY,
-    targetX,
-    targetY,
-  });
+export function EnablesEdge({ id, source, target }: EdgeProps) {
+    const sourceNode = useInternalNode(source);
+    const targetNode = useInternalNode(target);
+  
+    if (!sourceNode || !targetNode) {
+      return null;
+    }
+  
+    const { sx, sy, tx, ty } = getEdgeParams(sourceNode, targetNode);
+  
+    const [edgePath] = getStraightPath({
+      sourceX: sx,
+      sourceY: sy,
+      targetX: tx,
+      targetY: ty,
+    });
 
   return (
     <>
@@ -70,14 +100,22 @@ export function EnablesEdge({ id, sourceX, sourceY, targetX, targetY }: EdgeProp
   );
 }
 
-export function BoosterEdge({ id, sourceX, sourceY, targetX, targetY}: EdgeProps) {
-  const [edgePath] = getStraightPath({
-    sourceX,
-    sourceY,
-    targetX,
-    targetY,
-  });
-
+export function BoosterEdge({ id, source, target }: EdgeProps) {
+    const sourceNode = useInternalNode(source);
+    const targetNode = useInternalNode(target);
+  
+    if (!sourceNode || !targetNode) {
+      return null;
+    }
+  
+    const { sx, sy, tx, ty } = getEdgeParams(sourceNode, targetNode);
+  
+    const [edgePath] = getStraightPath({
+      sourceX: sx,
+      sourceY: sy,
+      targetX: tx,
+      targetY: ty,
+    });
   return (
     <>
       <BaseEdge
