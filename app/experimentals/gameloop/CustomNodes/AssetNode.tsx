@@ -27,6 +27,7 @@ function AssetNode(props: NodeProps<fNode>) {
     setIsEditing(true);
     setIsResizerActive(true); // Enable resizer on double-click
     if (textareaRef.current) {
+      textareaRef.current.style.display = 'block';
       textareaRef.current.focus();
     }
   };
@@ -34,6 +35,9 @@ function AssetNode(props: NodeProps<fNode>) {
   const handleBlur = () => {
     setIsEditing(false);
     setIsResizerActive(false); // Disable resizer after editing is done
+    if (textareaRef.current) {
+      textareaRef.current.style.display = 'none';
+    }
   };
 
   return (
@@ -54,16 +58,15 @@ function AssetNode(props: NodeProps<fNode>) {
         />
       )}
 
-      {isEditing ? (
-        <textarea
-          ref={textareaRef}
-          value={functionName}
-          onChange={onTextChange}
-          onBlur={handleBlur}
-          className={`${styles['textarea']}`}
-          style={{ width: '100%', minHeight: '30px', padding: '8px' }}
-        />
-      ) : (
+<textarea
+        ref={textareaRef}
+        value={functionName}
+        onChange={onTextChange}
+        onBlur={handleBlur}
+        className={`${styles['textarea']}`}
+        style={{ width: '100%', minHeight: '30px', padding: '8px', display: 'none' }}
+      />
+      {!isEditing && (
         <p
           onDoubleClick={handleDoubleClick}
           className={`${styles['paragraph']} ${styles['nodrag']}`}
