@@ -15,10 +15,8 @@ function StatusNode(props: NodeProps<fNode>) {
   const [isEditing, setIsEditing] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-
   const connection = useConnection();
   const isTarget = connection.inProgress && connection.fromNode.id !== props.id;
-
 
   const onTextChange = useCallback((evt: React.ChangeEvent<HTMLTextAreaElement>) => {
     setFunctionName(evt.target.value);
@@ -45,21 +43,12 @@ function StatusNode(props: NodeProps<fNode>) {
     <div className={`${styles['node']} ${styles['status-node']}`}>
       {isResizerActive && <NodeResizer minWidth={100} minHeight={30} />}
 
-      {!connection.inProgress && (
-        <Handle
-          type="source"
-          position={Position.Right}
-        />
-      )}
+      {!connection.inProgress && <Handle type='source' position={Position.Right} />}
       {(!connection.inProgress || isTarget) && (
-        <Handle
-          type="target"
-          position={Position.Left}
-          isConnectableStart={false}
-        />
+        <Handle type='target' position={Position.Left} isConnectableStart={false} />
       )}
 
-<textarea
+      <textarea
         ref={textareaRef}
         value={functionName}
         onChange={onTextChange}
@@ -80,4 +69,4 @@ function StatusNode(props: NodeProps<fNode>) {
   );
 }
 
-export {StatusNode};
+export { StatusNode };

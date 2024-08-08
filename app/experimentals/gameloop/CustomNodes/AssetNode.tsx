@@ -14,7 +14,6 @@ function AssetNode(props: NodeProps<fNode>) {
   const [isResizerActive, setIsResizerActive] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  
 
   const connection = useConnection();
   const isTarget = connection.inProgress && connection.fromNode.id !== props.id;
@@ -44,21 +43,12 @@ function AssetNode(props: NodeProps<fNode>) {
     <div className={`${styles['node']} ${styles['asset-node']}`}>
       {isResizerActive && <NodeResizer minWidth={100} minHeight={30} />}
 
-      {!connection.inProgress && (
-        <Handle
-          type="source"
-          position={Position.Right}
-        />
-      )}
+      {!connection.inProgress && <Handle type='source' position={Position.Right} />}
       {(!connection.inProgress || isTarget) && (
-        <Handle
-          type="target"
-          position={Position.Left}
-          isConnectableStart={false}
-        />
+        <Handle type='target' position={Position.Left} isConnectableStart={false} />
       )}
 
-<textarea
+      <textarea
         ref={textareaRef}
         value={functionName}
         onChange={onTextChange}

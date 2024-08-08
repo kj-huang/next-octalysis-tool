@@ -18,7 +18,6 @@ function ActionNode(props: NodeProps<fNode>) {
   const connection = useConnection();
   const isTarget = connection.inProgress && connection.fromNode.id !== props.id;
 
-
   const onTextChange = useCallback((evt: React.ChangeEvent<HTMLTextAreaElement>) => {
     setFunctionName(evt.target.value);
   }, []);
@@ -44,21 +43,12 @@ function ActionNode(props: NodeProps<fNode>) {
     <div className={`${styles['node']} ${styles['action-node']}`}>
       {isResizerActive && <NodeResizer minWidth={100} minHeight={30} />}
 
-      {!connection.inProgress && (
-        <Handle
-          type="source"
-          position={Position.Right}
-        />
-      )}
+      {!connection.inProgress && <Handle type='source' position={Position.Right} />}
       {(!connection.inProgress || isTarget) && (
-        <Handle
-          type="target"
-          position={Position.Left}
-          isConnectableStart={false}
-        />
+        <Handle type='target' position={Position.Left} isConnectableStart={false} />
       )}
 
-<textarea
+      <textarea
         ref={textareaRef}
         value={functionName}
         onChange={onTextChange}
@@ -79,4 +69,4 @@ function ActionNode(props: NodeProps<fNode>) {
   );
 }
 
-export {ActionNode};
+export { ActionNode };
