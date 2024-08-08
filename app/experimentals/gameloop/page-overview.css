@@ -16,6 +16,10 @@ aside {
     height: min-content;
 }
 
+.react-flow__node.selected {
+    border: 2px dotted white;
+}
+
 .game-element-node {
     background-color: #f9f9f9;
     border: 1px solid #e5e5e5;

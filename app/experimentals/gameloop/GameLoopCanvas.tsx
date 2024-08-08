@@ -54,6 +54,7 @@ const edgeTypes = {
 function GameLoopCanvas() {
   // const reactFlowWrapper = useRef(null);
   const [selectedEdgeType, setSelectedEdgeType] = useState('leads-to');
+
   const { screenToFlowPosition } = useReactFlow();
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
@@ -62,6 +63,7 @@ function GameLoopCanvas() {
   const onEdgesChange = useCallback((changes: any) => setEdges((eds) => applyEdgeChanges(changes, eds)), [setEdges]);
 
   const onConnect = useCallback((connection: any) => {
+    console.log('onConnect', connection);
     const edge = { ...connection, type: selectedEdgeType };
     setEdges((eds) => addEdge(edge, eds))
   }, [setEdges, selectedEdgeType]);
@@ -114,6 +116,22 @@ function GameLoopCanvas() {
     [screenToFlowPosition],
   );
 
+// const canvas = React.createRef<HTMLDivElement>();
+
+//   useEffect(() => {
+//     setupCanvasKeyListeners(canvas.current);
+//   }, [canvas])
+
+// const onNodeClick = (event: any, node: any) => {
+//   if(event.metaKey || event.ctrlKey || event.shiftKey) {
+//     console.log('ctrl or meta or shift key is pressed');
+//   }
+
+//   console.log('node clicked', node);
+// }
+
+
+
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
       <div className={`reactflow-wrapper`}>
@@ -126,9 +144,12 @@ function GameLoopCanvas() {
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
           onReconnect={onReconnect}
+          // onNodeClick={onNodeClick}
           fitView
           onDrop={onDrop}
           onDragOver={onDragOver}
+          onConnectStart={(e) => console.log('onConnectStart', e)}
+          onConnectEnd={(e) => console.log('onConnectEnd', e)}
           defaultEdgeOptions={defaultEdgeOptions}
         >
           <Controls />
