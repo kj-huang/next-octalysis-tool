@@ -57,6 +57,7 @@ export default function OctalysisTool() {
   }, []);
 
   const tutorialRefs = [
+    { ref: octalysisHeaderRef, message: 'This is an onboarding tutorial, just click to continue to see the full introduction.', position: 'bottom' },
     { ref: octalysisHeaderRef, message: 'This is the header where you can see the main controls.', position: 'bottom' },
     {
       ref: editorControlPanelRef,
@@ -66,6 +67,11 @@ export default function OctalysisTool() {
     {
       ref: radarRef,
       message: 'This is the radar chart where your data visualization will appear. Double click to edit Sticky Notes',
+      position: 'top',
+    },
+    {
+      ref: radarRef,
+      message: 'Let\'s start by changing some values to the radar chart. Move on the "Values" tab on the left.',
       position: 'top',
     },
   ];
