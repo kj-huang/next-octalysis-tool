@@ -13,7 +13,7 @@
     "typescript": "tsc --noEmit"
   },
   "dependencies": {
-    "@lexical/react": "^0.17.0",
+    "@lexical/react": "^0.18.0",
     "@lexical/rich-text": "^0.17.0",
     "@xyflow/react": "^12.2.1",
     "html2canvas": "^1.4.1",
