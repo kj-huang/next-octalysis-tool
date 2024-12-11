@@ -22,7 +22,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
     "react-range": "^1.10.0",
-    "react-rnd": "^10.4.12"
+    "react-rnd": "^10.4.13"
   },
   "devDependencies": {
     "@types/node": "^22",
